@@ -87,8 +87,17 @@
 	text-align: left;
 }
 
+QPushButton[active=true] {
+	color: rgb(255, 204, 0);
+}
+
 QPushButton:hover {
-	color: rgb(255, 204, 0)
+	color: rgb(255, 204, 0);
+}
+
+QPushButton:checked {
+	background-color: white;
+	border: none;
 }</string>
       </property>
       <layout class="QVBoxLayout" name="navbarLayout">
@@ -105,10 +114,10 @@ QPushButton:hover {
            <normaloff>:/icons/svgs/solid/bars.svg</normaloff>:/icons/svgs/solid/bars.svg</iconset>
          </property>
          <property name="checkable">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="checked">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="flat">
           <bool>true</bool>
@@ -125,6 +134,9 @@ QPushButton:hover {
            <normaloff>:/icons/svgs/solid/house.svg</normaloff>:/icons/svgs/solid/house.svg</iconset>
          </property>
          <property name="flat">
+          <bool>true</bool>
+         </property>
+         <property name="active" stdset="0">
           <bool>true</bool>
          </property>
         </widget>

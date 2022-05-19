@@ -15,6 +15,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_toggleNavBtn_toggled(bool checked);
+
+    void on_homeBtn_clicked();
+
+    void on_podcastsBtn_clicked();
+
+    void on_radioBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

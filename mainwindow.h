@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
+
+#include "api/yandexmusic.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    bool eventFilter(QObject *obj, QEvent *ev) override;
     ~MainWindow();
 
 private slots:
@@ -24,7 +28,23 @@ private slots:
 
     void on_radioBtn_clicked();
 
+    void on_searchLineEdit_textEdited(const QString &query);
+
+    void searchSuggest();
+
+    void onSearchSuggestionsResponse();
+
+    void on_searchSuggestionList_itemClicked(QListWidgetItem *item);
+
+    void on_searchLineEdit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
+    api::YandexMusic *apiClient;
+
+    QTimer searchSuggestionTimer;
+
+    // RESPONSES
+    QNetworkReply *searchSuggestionsReply = nullptr;
 };
 #endif // MAINWINDOW_H

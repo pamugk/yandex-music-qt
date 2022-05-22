@@ -22,6 +22,11 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         resources.qrc
+
+        api/yandexmusic.h api/yandexmusic.cpp
+        api/searchsuggestions.h api/searchsuggestions.cpp
+
+        utils/json_serialization.h utils/json_serialization.cpp
         ${TS_FILES}
 )
 
@@ -52,7 +57,7 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(yandex-music-qt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(yandex-music-qt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::NetworkAuth Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
 
 set_target_properties(yandex-music-qt PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

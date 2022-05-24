@@ -24,7 +24,19 @@ set(PROJECT_SOURCES
         resources.qrc
 
         api/yandexmusic.h api/yandexmusic.cpp
-        api/searchsuggestions.h api/searchsuggestions.cpp
+
+        api/domain/album.h api/domain/album.cpp
+        api/domain/artist.h api/domain/artist.cpp
+        api/domain/entity.h
+        api/domain/episode.h api/domain/episode.cpp
+        api/domain/label.h
+        api/domain/playlist.h api/domain/playlist.cpp
+        api/domain/podcast.h api/domain/podcast.cpp
+        api/domain/track.h api/domain/track.cpp
+        api/domain/video.h api/domain/video.cpp
+        api/domain/user.h api/domain/user.cpp
+
+        api/searchsuggestions.h
 
         utils/json_serialization.h utils/json_serialization.cpp
         ${TS_FILES}

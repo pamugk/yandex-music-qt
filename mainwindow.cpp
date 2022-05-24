@@ -153,12 +153,12 @@ void MainWindow::onSearchSuggestionsResponse()
     searchSuggestionsReply = nullptr;
     api::SearchSuggestions searchSuggestions;
     utils::deserializeSearchSuggestions(response, searchSuggestions);
-    for (auto suggestion: searchSuggestions.getSuggestions())
+    for (auto suggestion: searchSuggestions.suggestions)
     {
         ui->searchSuggestionList->addItem(new QListWidgetItem(suggestion, ui->searchSuggestionList));
     }
 
-    if (!searchSuggestions.getSuggestions().isEmpty())
+    if (!searchSuggestions.suggestions.isEmpty())
     {
         ui->searchSuggestionList->move(ui->searchLineEdit->mapToGlobal(QPoint(0, ui->searchLineEdit->height())));
         ui->searchSuggestionList->setMinimumWidth(ui->searchLineEdit->width());

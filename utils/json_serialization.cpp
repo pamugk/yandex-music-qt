@@ -12,14 +12,10 @@ namespace utils
             if (suggestResult.contains("suggestions"))
             {
                 auto suggestions = suggestResult["suggestions"].toArray();
-
-                std::vector<QString> receivedSuggestions(suggestions.size());
-                for (int i = 0; i < suggestions.size(); i++)
+                for (auto suggestions: suggestions)
                 {
-                    receivedSuggestions[i] = suggestions[i].toString();
+                    result.suggestions.append(suggestions.toString());
                 }
-
-                result.setSuggestions(QVector<QString>(receivedSuggestions.begin(), receivedSuggestions.end()));
             }
         }
     }

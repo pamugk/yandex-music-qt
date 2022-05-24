@@ -6,14 +6,9 @@
 
 namespace api
 {
-    class SearchSuggestions
+    struct SearchSuggestions
     {
         QVector<QString> suggestions;
-
-    public:
-        SearchSuggestions();
-        const QVector<QString> &getSuggestions() const;
-        void setSuggestions(const QVector<QString> &newSuggestions);
     };
 }
 

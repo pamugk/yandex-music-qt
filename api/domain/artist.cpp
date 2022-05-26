@@ -2,9 +2,9 @@
 
 namespace api
 {
-Artist::Artist(long id): id(id) { }
+Artist::Artist(qint64 id): id(id) { }
 
-    long Artist::getId()
+    qint64 Artist::getId()
     {
         return id;
     }

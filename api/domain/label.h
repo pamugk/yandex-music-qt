@@ -3,10 +3,13 @@
 
 #include <QString>
 
-struct Label
+namespace api
 {
-    long id;
-    QString name;
-};
+    struct Label
+    {
+        qint64 id = -1;
+        QString name;
+    };
+}
 
 #endif // LABEL_H

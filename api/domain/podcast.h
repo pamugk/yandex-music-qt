@@ -5,15 +5,18 @@
 #include <QString>
 #include <QUrl>
 
+#include "artist.h"
 #include "entity.h"
-#include "episode.h"
+#include "label.h"
 
 namespace api
 {
+    struct Episode;
+
     struct Podcast final: public Entity
     {
-        Podcast(long id);
-        long getId() override;
+        Podcast(qint64 id);
+        qint64 getId() override;
         Type getType() override;
 
         /*!
@@ -21,9 +24,13 @@ namespace api
          */
         QString title;
         /*!
+         * \brief contentWarning
+         */
+        QString contentWarning;
+        /*!
          * \brief year Podcast release year
          */
-        int year;
+        int year = -1;
         /*!
          * \brief releaseDate Podcast release date
          */
@@ -37,44 +44,123 @@ namespace api
          */
         QUrl ogImage;
         /*!
+         * \brief trackCount
+         */
+        int trackCount = -1;
+        /*!
          * \brief genre Podcast genre
          */
         QString genre;
         /*!
          * \brief trackCount Podcast episode total count
          */
-        int episodeCount;
+        int episodeCount = -1;
         /*!
          * \brief recent Recent podcast flag
          */
-        bool recent;
+        bool recent = false;
         /*!
          * \brief popular Popular podcast flag
          */
-        bool popular;
+        bool popular = false;
         /*!
          * \brief available Podcast availability flag
          */
-        bool available;
+        bool available = true;
         /*!
          * \brief availableForMobile Mobile app podcast availability
          */
-        bool availableForMobile;
+        bool availableForMobile = true;
         /*!
          * \brief availablePartially Free users podcast availability (partial)
          */
-        bool availablePartially;
+        bool availablePartially = true;
         /*!
          * \brief bests Best podcast episode ids
          */
-        QVector<long> bests;
+        QVector<qint64> bests;
         /*!
          * \brief volumes Podcast episodes
          */
         QVector<Episode> episodes;
+        /*!
+         * \brief labels Labels where podcast was recorded
+         */
+        QVector<Label> labels;
 
     private:
-        long id;
+        qint64 id;
+    };
+
+    struct Episode final: public Entity
+    {
+        Episode(qint64 id);
+        qint64 getId() override;
+        Type getType() override;
+
+        /*!
+         * \brief available
+         */
+        bool available = true;
+        /*!
+         * \brief availableAsRbt
+         */
+        bool availableAsRbt = false;
+        /*!
+         * \brief availableForPremiumUsers
+         */
+        bool availableForPremiumUsers = false;
+        /*!
+         * \brief availableFullWithoutPermission
+         */
+        bool availableFullWithoutPermission = false;
+        /*!
+         * \brief albums
+         */
+        QVector<Podcast> podcasts;
+        /*!
+         * \brief coverUri
+         */
+        QUrl coverUri;
+        /*!
+         * \brief ogImage
+         */
+        QUrl ogImage;
+        /*!
+         * \brief duration
+         */
+        QTime duration;
+        /*!
+         * \brief fileSize
+         */
+        int fileSize = -1;
+        /*!
+         * \brief previewDuration
+         */
+        QTime previewDuration;
+        /*!
+         * \brief rememberPosition
+         */
+        bool rememberPosition = false;
+        /*!
+         * \brief title
+         */
+        QString title;
+        /*!
+         * \brief artists
+         */
+        QVector<Artist> artists;
+        /*!
+         * \brief regions
+         */
+        QVector<QString> regions;
+        /*!
+         * \brief publicationDate
+         */
+        QDate publicationDate;
+
+    private:
+        qint64 id;
     };
 }
 

@@ -2,9 +2,9 @@
 
 namespace api
 {
-    Podcast::Podcast(long id): id(id) { }
+    Podcast::Podcast(qint64 id): id(id) { }
     
-    long Podcast::getId()
+    qint64 Podcast::getId()
     {
         return id;
     }
@@ -12,5 +12,17 @@ namespace api
     Entity::Type Podcast::getType()
     {
         return Entity::Type::PODCAST;
+    }
+
+    Episode::Episode(qint64 id): id(id) {}
+
+    qint64 Episode::getId()
+    {
+        return id;
+    }
+
+    Entity::Type Episode::getType()
+    {
+        return Entity::Type::EPISODE;
     }
 }

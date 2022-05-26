@@ -26,7 +26,7 @@ namespace api
 
             QString title;
             QUrl href;
-            Type type;
+            Type type = Type::OFFICIAL;
             QString socialNetwork;
         };
 
@@ -36,10 +36,37 @@ namespace api
             QUrl uri;
         };
 
-        Artist(long id);
-        long getId() override;
+        struct Counts
+        {
+            int tracks = -1;
+            int directAlbums = -1;
+            int alsoAlbums = -1;
+            int alsoTracks = 0;
+        };
+
+        struct Ratings
+        {
+            int week = -1;
+            int month = -1;
+            int day = -1;
+        };
+
+        Artist(qint64 id);
+        qint64 getId() override;
         Type getType() override;
 
+        /*!
+         * \brief name
+         */
+        QString name;
+        /*!
+         * \brief various
+         */
+        bool various;
+        /*!
+         * \brief composer
+         */
+        bool composer;
         /*!
          * \brief image Artist image
          */
@@ -53,9 +80,17 @@ namespace api
          */
         QVector<QString> genres;
         /*!
+         * \brief counts
+         */
+        Counts counts;
+        /*!
          * \brief available Artist availability flag
          */
-        bool available;
+        bool available = true;
+        /*!
+         * \brief ratings
+         */
+        Ratings ratings;
         /*!
          * \brief links Artist links on other sites
          */
@@ -63,11 +98,19 @@ namespace api
         /*!
          * \brief ticketsAvailable Tickets for artist concerts availability flag
          */
-        bool ticketsAvailable;
+        bool ticketsAvailable = false;
+        /*!
+         * \brief likesCount
+         */
+        int likesCount = -1;
         /*!
          * \brief description Artist description
          */
         Description description;
+        /*!
+         * \brief countries
+         */
+        QVector<QString> countries;
         /*!
          * \brief initDate Date of artist career start
          */
@@ -81,7 +124,7 @@ namespace api
         /*!
          * \brief id Artist id
          */
-        long id;
+        qint64 id;
 
     };
 }

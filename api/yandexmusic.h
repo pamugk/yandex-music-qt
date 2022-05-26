@@ -2,9 +2,9 @@
 #define YANDEXMUSIC_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
 
-#include <QtNetwork>
-#include <QOAuth2AuthorizationCodeFlow>
+#include "searchcategory.h"
 
 namespace api
 {
@@ -15,11 +15,21 @@ namespace api
         explicit YandexMusic(QObject *parent = nullptr);
 
         /*!
+         * \brief search
+         * \param text
+         * \param page
+         * \param type
+         * \param doNotCorrect
+         * \return
+         */
+        QNetworkReply *search(const QString &text, int page, SearchCategory type, bool nocorrect);
+
+        /*!
          * \brief Gets search suggestions
          * \param query Search query
          * \return A list of search suggestions and the best match for passed search query
          */
-        QNetworkReply *findSearchSuggestions(const QString &query);
+        QNetworkReply *findSearchSuggestions(const QString &part);
 
     private:
         static const QString API_HOST;

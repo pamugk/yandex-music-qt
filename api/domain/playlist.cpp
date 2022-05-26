@@ -2,9 +2,9 @@
 
 namespace api
     {
-    Playlist::Playlist(long id):id(id) { }
+    Playlist::Playlist(qint64 id):id(id) { }
 
-    long Playlist::getId()
+    qint64 Playlist::getId()
     {
         return id;
     }

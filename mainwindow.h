@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
+#include <QTimer>
 
 #include "api/yandexmusic.h"
 

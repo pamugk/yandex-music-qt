@@ -17,30 +17,35 @@ namespace api
         QString value;
     };
 
-    enum Visibility
-    {
-        PUBLIC,
-        PRIVATE
-    };
-
     /*!
      * \brief The Playlist class
      */
     struct Playlist final: public Entity
     {
+
+        enum Visibility
+        {
+            PUBLIC,
+            PRIVATE
+        };
+
         struct Owner
         {
-            long id;
+            qint64 id = -1;
             QString login;
             QString name;
             QString sex;
-            bool verified;
+            bool verified = false;
         };
 
-        Playlist(long id);
-        long getId() override;
+        Playlist(qint64 id);
+        qint64 getId() override;
         Type getType() override;
 
+        /*!
+         * \brief title
+         */
+        QString title;
         /*!
          * \brief description
          */
@@ -52,15 +57,19 @@ namespace api
         /*!
          * \brief available
          */
-        bool available;
+        bool available = false;
         /*!
          * \brief collective
          */
-        bool collective;
+        bool collective = false;
         /*!
          * \brief coverUri
          */
         QUrl coverUri;
+        /*!
+         * \brief ogImage
+         */
+        QUrl ogImage;
         /*!
          * \brief created
          */
@@ -84,19 +93,15 @@ namespace api
         /*!
          * \brief banner
          */
-        bool banner;
+        bool banner = false;
         /*!
          * \brief premiere
          */
-        bool premiere;
+        bool premiere = false;
         /*!
          * \brief kind
          */
-        int kind;
-        /*!
-         * \brief ogImage
-         */
-        QUrl ogImage;
+        int kind = -1;
         /*!
          * \brief owner
          */
@@ -104,37 +109,33 @@ namespace api
         /*!
          * \brief revision
          */
-        int revision;
+        int revision = -1;
         /*!
          * \brief snapshot
          */
-        int snapshot;
+        int snapshot = -1;
         /*!
          * \brief tags
          */
         QVector<Tag> tags;
         /*!
-         * \brief title
-         */
-        QString title;
-        /*!
          * \brief trackCount
          */
-        int trackCount;
+        int trackCount = -1;
         /*!
          * \brief visibility
          */
-        Visibility visibility;
+        Visibility visibility = Visibility::PRIVATE;
         /*!
          * \brief likesCount
          */
-        int likesCount;
+        int likesCount = -1;
 
     private:
         /*!
          * \brief id Playlist id
          */
-        long id;
+        qint64 id;
     };
 }
 

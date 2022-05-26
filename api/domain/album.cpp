@@ -2,9 +2,9 @@
 
 namespace api
 {
-    Album::Album(long id): id(id) { }
+    Album::Album(qint64 id): id(id) { }
 
-    long Album::getId()
+    qint64 Album::getId()
     {
         return id;
     }
@@ -12,5 +12,17 @@ namespace api
     Entity::Type Album::getType()
     {
         return Entity::Type::ALBUM;
+    }
+
+    Track::Track(qint64 id): id(id) { }
+
+    qint64 Track::getId()
+    {
+        return id;
+    }
+
+    Entity::Type Track::getType()
+    {
+        return Entity::Type::TRACK;
     }
 }

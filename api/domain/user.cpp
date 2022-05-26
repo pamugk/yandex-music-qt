@@ -2,9 +2,9 @@
 
 namespace api
 {
-    User::User(long id): id(id){ }
+    User::User(qint64 id): id(id){ }
     
-    long User::getId()
+    qint64 User::getId()
     {
         return id;
     }

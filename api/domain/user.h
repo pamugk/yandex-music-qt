@@ -7,12 +7,12 @@ namespace api
 {
     struct User final: public Entity
     {
-        User(long id);
-        long getId() override;
+        User(qint64 id);
+        qint64 getId() override;
         Type getType() override;
 
     private:
-        long id;
+        qint64 id;
     };
 }
 

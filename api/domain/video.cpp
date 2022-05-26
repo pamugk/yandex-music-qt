@@ -2,11 +2,11 @@
 
 namespace api
 {
-    Video::Video(long id): id(id) { }
+    Video::Video() { }
     
-    long Video::getId()
+    qint64 Video::getId()
     {
-        return id;
+        return -1;
     }
     
     Entity::Type Video::getType()

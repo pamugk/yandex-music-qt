@@ -133,9 +133,8 @@ void MainWindow::searchSuggest()
     {
         searchSuggestionsReply = apiClient->findSearchSuggestions(ui->searchLineEdit->text());
         connect(searchSuggestionsReply, &QNetworkReply::errorOccurred, [this](QNetworkReply::NetworkError error){
-            qDebug() << error << "\n";
-            this->searchSuggestionsReply->deleteLater();
-            this->searchSuggestionsReply = nullptr;
+            searchSuggestionsReply->deleteLater();
+            searchSuggestionsReply = nullptr;
         });
         connect(searchSuggestionsReply, &QNetworkReply::finished, this, &MainWindow::onSearchSuggestionsResponse);
     }
@@ -148,7 +147,6 @@ void MainWindow::onSearchSuggestionsResponse()
         return;
     }
 
-    qDebug() << "Success\n";
     auto response = utils::tryReadJsonResponse(searchSuggestionsReply).object();
     searchSuggestionsReply = nullptr;
     api::SearchSuggestions searchSuggestions;
@@ -183,7 +181,22 @@ void MainWindow::on_searchLineEdit_returnPressed()
     {
         ui->searchSuggestionList->clear();
         ui->searchSuggestionList->hide();
-        qDebug() << "Do search";
+        ui->searchLineEdit->setEnabled(false);
+
+        auto searchResponse = apiClient->search(ui->searchLineEdit->text(), 0, api::SearchCategory::ALL, false);
+        connect(searchResponse, &QNetworkReply::errorOccurred, [this, searchResponse](QNetworkReply::NetworkError error){
+            searchResponse->deleteLater();
+            ui->searchLineEdit->setEnabled(true);
+        });
+        connect(searchResponse, &QNetworkReply::finished, [searchResponse, this]{
+            if (searchResponse->error() == QNetworkReply::NetworkError::NoError)
+            {
+                auto searchResultJson = utils::tryReadJsonResponse(searchResponse).object();
+                api::SearchResult searhResult;
+                utils::deserializeSearchResult(searchResultJson, searhResult);
+                ui->searchLineEdit->setEnabled(true);
+            }
+        });
     }
 }
 

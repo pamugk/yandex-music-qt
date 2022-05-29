@@ -23,6 +23,13 @@ set(PROJECT_SOURCES
         mainwindow.ui
         resources.qrc
 
+        components/albumcard.h components/albumcard.cpp components/albumcard.ui
+        components/artistcard.h components/artistcard.cpp components/artistcard.ui
+        components/playlistcard.h components/playlistcard.cpp components/playlistcard.ui
+        components/podcastcard.h components/podcastcard.cpp components/podcastcard.ui
+
+        pages/searchpage.h pages/searchpage.cpp pages/searchpage.ui
+
         api/yandexmusic.h api/yandexmusic.cpp
 
         api/domain/album.h api/domain/album.cpp

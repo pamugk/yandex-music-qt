@@ -43,9 +43,12 @@ private:
     Ui::MainWindow *ui;
     api::YandexMusic *apiClient;
 
+    QWidget *currentPage;
     QTimer searchSuggestionTimer;
 
     // RESPONSES
     QNetworkReply *searchSuggestionsReply = nullptr;
+
+    void switchPage(QWidget *);
 };
 #endif // MAINWINDOW_H

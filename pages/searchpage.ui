@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchPage</class>
+ <widget class="QTabWidget" name="SearchPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TabWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <property name="tabBarAutoHide">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="allTab">
+   <attribute name="title">
+    <string>Всё</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="artistTab">
+   <attribute name="title">
+    <string>%1 исполнител%2</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="albumTab">
+   <attribute name="title">
+    <string>%1 альбом%2</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="trackTab">
+   <attribute name="title">
+    <string>%1 трек%2</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="podcastTab">
+   <attribute name="title">
+    <string>%1 подкаст%2</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="episodeTab">
+   <attribute name="title">
+    <string>%1 эпизод%2</string>
+   </attribute>
+  </widget>
+  <widget class="QWidget" name="playlistTab">
+   <attribute name="title">
+    <string>%1 плейлист%2</string>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
